@@ -1,15 +1,14 @@
 package com.viktoriia.service;
 
-import com.google.common.hash.Hashing;
 import com.viktoriia.dto.Dto;
 import com.viktoriia.model.Keys;
 import com.viktoriia.model.Urls;
 import com.viktoriia.repository.KeysRepositoryImpl;
 import com.viktoriia.repository.UrlsRepositoryImpl;
+import com.viktoriia.utils.UrlUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,8 +63,7 @@ public class UrlsService {
     }
 
     public String encode(String longUrl) {
-        String shortURL = Hashing.sha256().hashString(longUrl, StandardCharsets.UTF_8).toString();
-
-        return shortURL;
+        UrlUtils urlUtils = new UrlUtils();
+       return urlUtils.shortenURL(longUrl);
     }
 }
