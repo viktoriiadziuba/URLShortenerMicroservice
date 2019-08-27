@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+</nav>
+
+<main role="main" class="container my-5">
+
+    <div class="starter-template">
+        <h1>Find short Url</h1>
+        <form th:action="@{/findShortUrl}" method="get">
+            <title>Enter your secret key</title>
+            <input type="text" placeholder="secretKey" name="secretKey" th:value="${secretKey}" class="form-control" required/>
+            <div class="my-3">
+            <input type="submit" value="Search"  class="btn btn-success">
+                <input type="reset" class="btn btn-outline">
+            </div>
+        </form>
+
+        <h1>Find original Url</h1>
+        <form th:action="@{/findOriginalUrl}" method="get">
+            <title>Enter your short URL</title>
+            <input type="text" placeholder="shortUrl" name="shortUrl" th:value="${shortUrl}" class="form-control" required/>
+            <div class="my-3">
+            <input type="submit" value="Search" class="btn btn-success">
+                <input type="reset" class="btn btn-outline">
+            </div>
+        </form>
+
+        <h1>Delete Url</h1>
+        <form th:action="@{/delete}" method="post">
+            <title>Enter your secret key</title>
+            <input type="text" placeholder="secretKey" name="secretKey" th:value="${secretKey}" class="form-control" required/>
+            <div class="my-3">
+            <input type="submit" value="Delete" class="btn btn-danger">
+                <input type="reset" class="btn btn-outline">
+            </div>
+        </form>
+
+        <div class="my-5">
+        <a th:href="@{/addUrl}" class="btn btn-block btn-outline-primary">Create URL</a>
+        </div>
+
+        <h2>
+            <span th:text="${result}"></span>
+        </h2>
+    </div>
+
+</main>
+<!-- /.container -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

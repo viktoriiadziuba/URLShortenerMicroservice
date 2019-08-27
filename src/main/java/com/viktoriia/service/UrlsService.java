@@ -24,13 +24,13 @@ public class UrlsService {
 
     public String saveNewUrls(Dto dto) {
         Urls urls = new Urls();
-        urls.setOriginalUrl(dto.getLongUrl());
-        urls.setShortUrl(encode(dto.getLongUrl()));
+        urls.setOriginalUrl(dto.getOriginalUrl());
+        urls.setShortUrl(encode(dto.getOriginalUrl()));
         urlsRepository.add(urls);
 
         Keys keys = new Keys();
         keys.setKey(dto.getSecretKey());
-        keys.setShortUrl(encode(dto.getLongUrl()));
+        keys.setShortUrl(encode(dto.getOriginalUrl()));
         keysRepository.add(keys);
         return "Your short url: " + urls.getShortUrl();
     }

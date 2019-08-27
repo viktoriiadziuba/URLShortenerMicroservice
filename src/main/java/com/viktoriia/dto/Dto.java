@@ -11,6 +11,6 @@ import lombok.Setter;
 @Setter
 public class Dto {
 
-    private String longUrl;
+    private String originalUrl;
     private String secretKey;
 }
