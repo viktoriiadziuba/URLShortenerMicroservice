@@ -29,7 +29,7 @@ public class UrlsService {
 
         Keys keys = new Keys();
         keys.setKey(dto.getSecretKey());
-        keys.setShortUrl(encode(dto.getOriginalUrl()));
+        keys.setShortUrl(urls.getShortUrl());
         keysRepository.add(keys);
         return "Your short url: " + urls.getShortUrl();
     }
