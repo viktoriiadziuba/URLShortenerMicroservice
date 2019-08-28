@@ -21,10 +21,13 @@ public class UrlsService {
     @Autowired
     KeysRepositoryImpl keysRepository;
 
+    @Autowired
+    UrlUtils utils;
+
     public String saveNewUrls(Dto dto) {
         Urls urls = new Urls();
         urls.setOriginalUrl(dto.getOriginalUrl());
-        urls.setShortUrl(encode(dto.getOriginalUrl()));
+        urls.setShortUrl(utils.shortenURL(dto.getOriginalUrl()));
         urlsRepository.add(urls);
 
         Keys keys = new Keys();
@@ -36,7 +39,7 @@ public class UrlsService {
 
     public Map<String, String> findAllKeys() {
         Map<Object, Object> keys = keysRepository.getAllKeys();
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         for (Map.Entry<Object, Object> entry : keys.entrySet()) {
             String key = (String) entry.getKey();
             map.put(key, keys.get(key).toString());
@@ -46,7 +49,7 @@ public class UrlsService {
 
     public Map<String, String> findAllUrls() {
         Map<Object, Object> urls = urlsRepository.getAllUrls();
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         for (Map.Entry<Object, Object> entry : urls.entrySet()) {
             String key = (String) entry.getKey();
             map.put(key, urls.get(key).toString());
@@ -57,13 +60,8 @@ public class UrlsService {
     public String deleteUrlsBySecretKey(String secretKey) {
         Map<String, String> keys = findAllKeys();
         String shortUrl = keys.get(secretKey);
-        urlsRepository.delete(shortUrl);
-        keysRepository.delete(secretKey);
-        return "Urls are successfully deleted";
-    }
-
-    public String encode(String longUrl) {
-        UrlUtils urlUtils = new UrlUtils();
-        return urlUtils.shortenURL(longUrl);
+        String urlsResult = urlsRepository.delete(shortUrl);
+        String keysResult = keysRepository.delete(secretKey);
+        return urlsResult + " " + keysResult;
     }
 }

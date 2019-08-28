@@ -8,8 +8,8 @@ public interface UrlsRepository {
 
     Map<Object, Object> getAllUrls();
 
-    void add(Urls urls);
+    Urls add(Urls urls);
 
-    void delete(String id);
+    String delete(String id);
 
 }

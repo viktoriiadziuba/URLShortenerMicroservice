@@ -8,8 +8,8 @@ public interface KeysRepository {
 
     Map<Object, Object> getAllKeys();
 
-    void add(Keys keys);
+    Keys add(Keys keys);
 
-    void delete(String id);
+    String delete(String id);
 
 }

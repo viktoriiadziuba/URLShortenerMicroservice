@@ -33,13 +33,15 @@ public class UrlsRepositoryImpl implements UrlsRepository {
     }
 
     @Override
-    public void add(Urls urls) {
+    public Urls add(Urls urls) {
         hashOperations.put(KEY, urls.getShortUrl(), urls.getOriginalUrl());
+        return urls;
     }
 
     @Override
-    public void delete(String shortUrl) {
+    public String delete(String shortUrl) {
         hashOperations.delete(KEY, shortUrl);
+        return "Urls are successfully deleted";
     }
 
 }

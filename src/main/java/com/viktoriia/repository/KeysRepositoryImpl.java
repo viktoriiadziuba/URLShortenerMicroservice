@@ -33,13 +33,15 @@ public class KeysRepositoryImpl implements KeysRepository {
     }
 
     @Override
-    public void add(Keys keys) {
+    public Keys add(Keys keys) {
         hashOperations.put(KEY, keys.getKey(), keys.getShortUrl());
+        return keys;
     }
 
     @Override
-    public void delete(String key) {
+    public String delete(String key) {
         hashOperations.delete(KEY, key);
+        return "Keys are successfully deleted";
     }
 
 }

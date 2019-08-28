@@ -1,21 +1,24 @@
 package com.viktoriia.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Random;
 
+@Component
 public class UrlUtils {
 
     private HashMap<String, String> keyMap;
     private HashMap<String, String> valueMap;
 
     private String domain;
-    private char myChars[];
+    private char[] myChars;
     private Random myRand;
     private int keyLength;
 
     public UrlUtils() {
-        keyMap = new HashMap<String, String>();
-        valueMap = new HashMap<String, String>();
+        keyMap = new HashMap<>();
+        valueMap = new HashMap<>();
         myRand = new Random();
         keyLength = 8;
         myChars = new char[62];
