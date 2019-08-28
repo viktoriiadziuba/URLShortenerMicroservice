@@ -18,17 +18,17 @@ public class KeysRepositoryImpl implements KeysRepository {
     private HashOperations hashOperations;
 
     @Autowired
-    public KeysRepositoryImpl(RedisTemplate<String, Object> redisTemplate){
+    public KeysRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     @PostConstruct
-    private void init(){
+    private void init() {
         hashOperations = redisTemplate.opsForHash();
     }
 
     @Override
-    public Map<Object, Object> getAllUrls() {
+    public Map<Object, Object> getAllKeys() {
         return hashOperations.entries(KEY);
     }
 

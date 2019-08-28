@@ -18,12 +18,12 @@ public class UrlsRepositoryImpl implements UrlsRepository {
     private HashOperations hashOperations;
 
     @Autowired
-    public UrlsRepositoryImpl(RedisTemplate<String, Object> redisTemplate){
+    public UrlsRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     @PostConstruct
-    private void init(){
+    private void init() {
         hashOperations = redisTemplate.opsForHash();
     }
 

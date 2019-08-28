@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface KeysRepository {
 
-    Map<Object, Object> getAllUrls();
+    Map<Object, Object> getAllKeys();
 
     void add(Keys keys);
 

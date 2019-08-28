@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Setter
 public class Urls implements Serializable {
 
-    private String  shortUrl;
-    private String  originalUrl;
+    private String shortUrl;
+    private String originalUrl;
 }

@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class UrlUtils {
 
-    private HashMap<String, String>  keyMap;
+    private HashMap<String, String> keyMap;
     private HashMap<String, String> valueMap;
 
     private String domain;
@@ -35,12 +35,12 @@ public class UrlUtils {
 
     public String shortenURL(String longURL) {
         String shortURL = "";
-            longURL = sanitizeURL(longURL);
-            if (valueMap.containsKey(longURL)) {
-                shortURL = domain + "/" + valueMap.get(longURL);
-            } else {
-                shortURL = domain + "/" + getKey(longURL);
-            }
+        longURL = sanitizeURL(longURL);
+        if (valueMap.containsKey(longURL)) {
+            shortURL = domain + "/" + valueMap.get(longURL);
+        } else {
+            shortURL = domain + "/" + getKey(longURL);
+        }
         return shortURL;
     }
 

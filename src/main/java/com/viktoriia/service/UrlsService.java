@@ -35,9 +35,9 @@ public class UrlsService {
     }
 
     public Map<String, String> findAllKeys() {
-        Map<Object, Object> keys = keysRepository.getAllUrls();
+        Map<Object, Object> keys = keysRepository.getAllKeys();
         Map<String, String> map = new HashMap<String, String>();
-        for(Map.Entry<Object, Object> entry : keys.entrySet()){
+        for (Map.Entry<Object, Object> entry : keys.entrySet()) {
             String key = (String) entry.getKey();
             map.put(key, keys.get(key).toString());
         }
@@ -47,7 +47,7 @@ public class UrlsService {
     public Map<String, String> findAllUrls() {
         Map<Object, Object> urls = urlsRepository.getAllUrls();
         Map<String, String> map = new HashMap<String, String>();
-        for(Map.Entry<Object, Object> entry : urls.entrySet()){
+        for (Map.Entry<Object, Object> entry : urls.entrySet()) {
             String key = (String) entry.getKey();
             map.put(key, urls.get(key).toString());
         }
@@ -64,6 +64,6 @@ public class UrlsService {
 
     public String encode(String longUrl) {
         UrlUtils urlUtils = new UrlUtils();
-       return urlUtils.shortenURL(longUrl);
+        return urlUtils.shortenURL(longUrl);
     }
 }
